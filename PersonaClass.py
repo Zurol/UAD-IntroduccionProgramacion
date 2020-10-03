@@ -2,7 +2,7 @@ class Persona:
     nombre = ""
     edad = 0
     puedeComprar = "NO"
-    
+
     def __init__(self, nombre, edad):
         self.nombre = nombre
         self.edad = edad
@@ -11,7 +11,7 @@ class Persona:
 
         if self.edad >= 18:
             self.puedeComprar = "SI"
-        
+
         return self.puedeComprar
 
     def imprimirObjeto(self):
