@@ -10,6 +10,9 @@ class Animal:
     def setName(self, name):
         self.Name = name
 
+    def eat(self):
+        print("Yam!")
+
 class Bird(Animal):
     def __init__(self, Name="", Age=""):
         self.Name = Name
@@ -23,6 +26,8 @@ class Bird(Animal):
         for x in range(distance):
             print("Fly!")
 
+    def eat(self, seed):
+        print("Eating " + seed)
 
 class Fish(Animal):
     def __init__(self, Name="", Age=""):
@@ -37,12 +42,19 @@ class Fish(Animal):
         for x in range(distance):
             print("Swim!")
 
+    def eat(self, something, size):
+        print("Eating " + something)
+
 
 Gallina = Bird("Camila", 2)
 Salmon = Fish("Salomón", 0.5)
 
 print(Gallina.getName())
 Gallina.fly(5)
+Gallina.eat("Cárdamo")
+
+print("\n ---- \n")
 
 print(Salmon.getName())
 Salmon.swim(2)
+Salmon.eat("Algo", 7)

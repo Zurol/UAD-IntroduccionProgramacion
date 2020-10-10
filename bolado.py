@@ -19,7 +19,6 @@ def inciarJuego():
     buttonCara.place(x=60, y=80)
     buttonCruz.place(x=160, y=80)
     return True
-              
 
 def limpiarTablero():
     label.configure(text = "", bg='white')
