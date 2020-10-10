@@ -13,15 +13,43 @@ def startGame():
 
 
 def makeMove(Seleccion):
+    response = ""
+    fcSwordAttackButton.configure(bg='#000')
+    fcBowAttackButton.configure(bg='#000')
+    fcShieldAttackButton.configure(bg='#000')
+
     if Seleccion=="Escudo":
         response = hero.defense(Seleccion, villain)
+        fcShieldAttackButton.configure(bg='green')
 
-    else :
+    elif Seleccion=="Espada" :
         response = hero.attack(Seleccion, villain)
+        fcSwordAttackButton.configure(bg='green')
+
+    elif Seleccion=="Arco" :
+        response = hero.attack(Seleccion, villain)
+        fcBowAttackButton.configure(bg='green')
+
 
     balance = "{0}/{1}".format(hero.life, hero.maxLife)
     firstCharacterContainer.configure(text = balance)
+
+    balance = "{0}/{1}".format(villain.life, villain.maxLife)
+    secondCharacterContainer.configure(text = balance)
+
+    scSwordAttackButton.configure(bg='#000')
+    scBowAttackButton.configure(bg='#000')
+    scShieldAttackButton.configure(bg='#000')
+
     print(response)
+    if response == 0:
+        scSwordAttackButton.configure(bg='green')
+
+    elif response == 1:
+        scBowAttackButton.configure(bg='green')
+
+    elif response == 2:
+        scShieldAttackButton.configure(bg='green')
 
 
 
@@ -65,7 +93,7 @@ hero.equip(heroBow)
 
 
 print("\nCreando Escudo")
-heroShield = Shield("Aegis", 10, 100)
+heroShield = Shield("Aegis", 10, 10)
 print("Equipando escudo ...")
 hero.equip(heroShield)
 
@@ -94,7 +122,7 @@ villain.equip(villainBow)
 
 
 print("\nCreando Escudo")
-villainShield = Shield("Dark Shield", 10, 100)
+villainShield = Shield("Dark Shield", 10, 10)
 print("Equipando escudo ...")
 villain.equip(villainShield)
 

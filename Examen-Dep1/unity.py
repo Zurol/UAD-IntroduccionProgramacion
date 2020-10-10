@@ -26,13 +26,12 @@ class Unity:
             self.bow = weapon
             print("Arco equipado")
 
-        elif weapon.type == 'Shield':
+        elif weapon.type == 'Escudo':
             self.shield = weapon
             print("Escudo equipado")
 
 
     def attack(self, weapon, target):
-        target.randomMove()
 
         damage = 0
         print("Ataque con {0}".format(weapon))
@@ -44,10 +43,27 @@ class Unity:
 
         print(damage)
 
+        moveIndex = target.randomMove(self)
+
+        if not (moveIndex == 2) :
+            target.life -= damage
+
+        else :
+            print("El daño fue bloqueado")
+
+        return moveIndex
+
+
 
 
     def defense(self, weapon, target):
         print("Defendiendo con {0}".format(weapon))
+
+        moveIndex = target.randomMove(self)
+
+        print("El daño fue bloqueado")
+
+        return moveIndex
 
     def details(self):
         print("Nombre: {0} | Tipo: {1} | Armadura: {2} | Vida: {3}/{4} ".format(self.name, self.type, self.armor, self.life, self.maxLife))
