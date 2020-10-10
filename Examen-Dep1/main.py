@@ -33,9 +33,13 @@ def makeMove(Seleccion):
 
     balance = "{0}/{1}".format(hero.life, hero.maxLife)
     firstCharacterContainer.configure(text = balance)
+    porcentaje = ( 20 / hero.maxLife ) * hero.life
+    firstCharacterCurrentLife.config(width = int(porcentaje))
 
     balance = "{0}/{1}".format(villain.life, villain.maxLife)
     secondCharacterContainer.configure(text = balance)
+    porcentaje = ( 20 / villain.maxLife ) * villain.life
+    secondCharacterCurrentLife.config(width = int(porcentaje))
 
     scSwordAttackButton.configure(bg='#000')
     scBowAttackButton.configure(bg='#000')
@@ -150,7 +154,7 @@ firstCharacterContainer.place(x=100, y=100)
 firstCharacterLife = tk.Label(root, text="", width=20, heigh=1, bg='#424251', fg='white')
 firstCharacterLife.place(x=100, y=270)
 
-firstCharacterCurrentLife = tk.Label(root, text="", width=10, heigh=1, bg='#00B22D', fg='white')
+firstCharacterCurrentLife = tk.Label(root, text="", width=20, heigh=1, bg='#00B22D', fg='white')
 firstCharacterCurrentLife.place(x=100, y=270)
 
 fcSwordAttackButton = tk.Button(root, bg='#000', fg='white', height = 2, width = 10, text="ESPADA",
@@ -176,7 +180,7 @@ secondCharacterContainer.place(x=455, y=100)
 secondCharacterLife = tk.Label(root, text="", width=20, heigh=1, bg='#424251', fg='white')
 secondCharacterLife.place(x=455, y=270)
 
-secondCharacterCurrentLife = tk.Label(root, text="", width=10, heigh=1, bg='#00B22D', fg='white')
+secondCharacterCurrentLife = tk.Label(root, text="", width=20, heigh=1, bg='#00B22D', fg='white')
 secondCharacterCurrentLife.place(x=455, y=270)
 
 scSwordAttackButton = tk.Label(root, bg='#000', fg='white', height = 2, width = 10, text="ESPADA")
