@@ -9,6 +9,7 @@ class Unity:
     sword = []
     bow = []
     shield = []
+    moveIndex = 0
 
     def __init__(self, name, type, armor, life):
         self.name = name
@@ -37,9 +38,11 @@ class Unity:
         print("Ataque con {0}".format(weapon))
         if weapon == 'Espada':
             damage = random.randint(self.sword.minDamage, self.sword.maxDamage)
+            self.moveIndex = 0
 
         if weapon == 'Arco':
             damage = random.randint(self.bow.minDamage, self.bow.maxDamage)
+            self.moveIndex = 1
 
         print(damage)
 
@@ -49,7 +52,14 @@ class Unity:
             target.life -= damage
 
         else :
-            print("El daño fue bloqueado")
+            self.moveIndex = 2
+            if target.shield.durability > 0:
+                print("El daño fue bloqueado")
+                target.shield.durability -= 1
+            else :
+                print("No fue posible bloquear del daño")
+                target.life -= damage
+
 
         return moveIndex
 
@@ -61,7 +71,14 @@ class Unity:
 
         moveIndex = target.randomMove(self)
 
-        print("El daño fue bloqueado")
+        self.moveIndex = moveIndex
+
+        if self.shield.durability > 0 :
+            print("El daño fue bloqueado")
+            self.shield.durability -= 1
+
+        else :
+            print("Fue imposible bloquear el daño")
 
         return moveIndex
 

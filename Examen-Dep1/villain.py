@@ -35,7 +35,12 @@ class Villain(Unity):
             self.shield.durability -= 1
             print("La durabilidad del escudo ha bajado a {0}".format(self.shield.durability))
 
-        print(damage)
-        target.life -= damage
+        #print(damage)
+        if not (target.moveIndex == 2) :
+            target.life -= damage
+            self.moveIndex = moveIndex
+
+        else:
+            moveIndex = 2
 
         return moveIndex

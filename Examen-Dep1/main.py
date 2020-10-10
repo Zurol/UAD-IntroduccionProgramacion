@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 
 from knight import Knight
 from villain import Villain
@@ -10,13 +11,36 @@ from shield import Shield
 def startGame():
     #Desplegar imagen
     print("Iniciando el juego")
+    hero.life = hero.maxLife
+    villain.life = villain.maxLife
 
+    print(hero.life)
+    print(villain.life)
+
+    fcSwordAttackButton.configure(bg='#000', fg='white', state='normal')
+    fcBowAttackButton.configure(bg='#000', fg='white', state='normal')
+    fcShieldAttackButton.configure(bg='#000', fg='white', state='normal')
+    scSwordAttackButton.configure(bg='#000', fg='white')
+    scBowAttackButton.configure(bg='#000', fg='white')
+    scShieldAttackButton.configure(bg='#000', fg='white')
+    balance = "{0}/{1}".format(hero.life, hero.maxLife)
+    firstCharacterContainer.configure(text = balance)
+    porcentaje = ( 20 / hero.maxLife ) * hero.life
+    firstCharacterCurrentLife.config(width = int(porcentaje), bg='green')
+
+    balance = "{0}/{1}".format(villain.life, villain.maxLife)
+    secondCharacterContainer.configure(text = balance)
+    porcentaje = ( 20 / villain.maxLife ) * villain.life
+    secondCharacterCurrentLife.config(width = int(porcentaje), bg='green')
 
 def makeMove(Seleccion):
     response = ""
     fcSwordAttackButton.configure(bg='#000')
     fcBowAttackButton.configure(bg='#000')
     fcShieldAttackButton.configure(bg='#000')
+    scSwordAttackButton.configure(bg='#000')
+    scBowAttackButton.configure(bg='#000')
+    scShieldAttackButton.configure(bg='#000')
 
     if Seleccion=="Escudo":
         response = hero.defense(Seleccion, villain)
@@ -30,22 +54,6 @@ def makeMove(Seleccion):
         response = hero.attack(Seleccion, villain)
         fcBowAttackButton.configure(bg='green')
 
-
-    balance = "{0}/{1}".format(hero.life, hero.maxLife)
-    firstCharacterContainer.configure(text = balance)
-    porcentaje = ( 20 / hero.maxLife ) * hero.life
-    firstCharacterCurrentLife.config(width = int(porcentaje))
-
-    balance = "{0}/{1}".format(villain.life, villain.maxLife)
-    secondCharacterContainer.configure(text = balance)
-    porcentaje = ( 20 / villain.maxLife ) * villain.life
-    secondCharacterCurrentLife.config(width = int(porcentaje))
-
-    scSwordAttackButton.configure(bg='#000')
-    scBowAttackButton.configure(bg='#000')
-    scShieldAttackButton.configure(bg='#000')
-
-    print(response)
     if response == 0:
         scSwordAttackButton.configure(bg='green')
 
@@ -55,6 +63,36 @@ def makeMove(Seleccion):
     elif response == 2:
         scShieldAttackButton.configure(bg='green')
 
+
+    balance = "{0}/{1}".format(hero.life, hero.maxLife)
+    firstCharacterContainer.configure(text = balance)
+    porcentaje = ( 20 / hero.maxLife ) * hero.life
+    firstCharacterCurrentLife.config(width = int(porcentaje))
+    if hero.life <= 0:
+        firstCharacterCurrentLife.config(bg = "red")
+        messagebox.showinfo(message="Has sido derrotado", title="Derrota")
+        fcSwordAttackButton.configure(state="disabled", bg="white")
+        fcBowAttackButton.configure(state="disabled", bg="white")
+        fcShieldAttackButton.configure(state="disabled", bg="white")
+        scSwordAttackButton.configure(bg="white", fg="#cecece")
+        scBowAttackButton.configure(bg="white", fg="#cecece")
+        scShieldAttackButton.configure(bg="white", fg="#cecece")
+
+
+
+    balance = "{0}/{1}".format(villain.life, villain.maxLife)
+    secondCharacterContainer.configure(text = balance)
+    porcentaje = ( 20 / villain.maxLife ) * villain.life
+    secondCharacterCurrentLife.config(width = int(porcentaje))
+    if villain.life <= 0:
+        secondCharacterCurrentLife.config(bg = "red")
+        messagebox.showinfo(message="Has derrotado al enemigo", title="Victoria")
+        fcSwordAttackButton.configure(state="disabled", bg="white")
+        fcBowAttackButton.configure(state="disabled", bg="white")
+        fcShieldAttackButton.configure(state="disabled", bg="white")
+        scSwordAttackButton.configure(bg="white", fg="#cecece")
+        scBowAttackButton.configure(bg="white", fg="#cecece")
+        scShieldAttackButton.configure(bg="white", fg="#cecece")
 
 
 #Iniciar el juego
