@@ -99,7 +99,7 @@ def makeMove(Seleccion):
 #Se crea una ventana
 #Inicias el juego
 #Despliegas las imágenes del caballero y el enemigo
-#
+
 
 heigh = 500
 width = 700

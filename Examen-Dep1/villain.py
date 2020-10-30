@@ -13,6 +13,8 @@ class Villain(Unity):
 
     def randomMove(self, target):
         moveIndex = random.randint(0, 2)
+        print("-----------",moveIndex)
+        print("[MoveIndex]>={0}".format(moveIndex))
         damage = 0
 
         if moveIndex == 0:
@@ -35,12 +37,16 @@ class Villain(Unity):
             self.shield.durability -= 1
             print("La durabilidad del escudo ha bajado a {0}".format(self.shield.durability))
 
+        print("[Enemigo usando]={0}".format(moveIndex))
+
+        print("[Caballero usando]={0}".format(target.moveIndex))
+
         #print(damage)
         if not (target.moveIndex == 2) :
             target.life -= damage
-            self.moveIndex = moveIndex
 
-        else:
-            moveIndex = 2
+        #else:
+        #    moveIndex = 2
+        #target.moveIndex = moveIndex
 
         return moveIndex

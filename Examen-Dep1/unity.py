@@ -70,8 +70,8 @@ class Unity:
         print("Defendiendo con {0}".format(weapon))
 
         moveIndex = target.randomMove(self)
-
-        self.moveIndex = moveIndex
+        print("[MoveIndex]>>>={0}".format(moveIndex))
+        self.moveIndex = 2
 
         if self.shield.durability > 0 :
             print("El daño fue bloqueado")
@@ -79,7 +79,8 @@ class Unity:
 
         else :
             print("Fue imposible bloquear el daño")
-
+        print("[MoveIndex]={0}".format(moveIndex))
+        print("[MoveIndex]={0}".format(target.moveIndex))
         return moveIndex
 
     def details(self):
