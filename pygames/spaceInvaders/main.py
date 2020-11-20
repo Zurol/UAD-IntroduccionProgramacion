@@ -37,26 +37,26 @@ pygame.display.set_caption("Space Invaders")
 icon = pygame.image.load("pygames/spaceInvaders/assets/ovni.png")
 pygame.display.set_icon(icon)
 
-#Enemy
-enemyImg = pygame.image.load("pygames/spaceInvaders/assets/alien.png")
-enemyX = 370
-enemyY = 480
-enemyX_Changed = 0
+# #Enemy
+# enemyImg = pygame.image.load("pygames/spaceInvaders/assets/alien.png")
+# enemyX = 370
+# enemyY = 480
+# enemyX_Changed = 0
 
-#Player
-playerImg = pygame.image.load("pygames/spaceInvaders/assets/astronave.png")
-playerX = 370
-playerY = 480
-playerX_Changed = 0
+# #Player
+# playerImg = pygame.image.load("pygames/spaceInvaders/assets/astronave.png")
+# playerX = 370
+# playerY = 480
+# playerX_Changed = 0
 
 firstPlayer = Player(370, 480)
 firstEnemy  = Enemy(370, 480)
 
-def player(x, y):
-    screen.blit(playerImg, (x, y))
+# def player(x, y):
+#     screen.blit(playerImg, (x, y))
 
-def enemy(x, y):
-    screen.blit(enemyImg, (x, x))
+# def enemy(x, y):
+#     screen.blit(enemyImg, (x, x))
 
 
 #Game loop
@@ -71,24 +71,24 @@ while running:
 
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_LEFT:
-            playerX_Changed = -0.1
+            #playerX_Changed = -0.1
             firstPlayer.changed = -0.1
         if event.key == pygame.K_RIGHT:
-            playerX_Changed = 0.1
+            #playerX_Changed = 0.1
             firstPlayer.changed = 0.1
 
     if event.type == pygame.KEYUP:
         if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT :
-            playerX_Changed = 0
+            #playerX_Changed = 0
             firstPlayer.changed = 0
 
-    playerX += playerX_Changed
+    #playerX += playerX_Changed
     firstPlayer.x += firstPlayer.changed
 
-    if (playerX <= 0):
-        playerX = 0
-    if (playerX > 736):
-        playerX = 736
+#    if (playerX <= 0):
+#        playerX = 0
+#    if (playerX > 736):
+#        playerX = 736
 
     if (firstPlayer.x <= 0):
         firstPlayer.x = 0
