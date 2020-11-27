@@ -19,10 +19,6 @@ class Enemy(Unity):
         self.y = y
 
 
-    # def draw(self, x, y):
-    #    screen.blit(self.image, (x, y))
-
-
 class EnemyLine(Enemy):
     line = []
     def __init__(self, unitsNumber=0, lineIndex=0):
@@ -90,8 +86,6 @@ class Army(EnemyLine):
         for fila in range(self.linesNumber):
             self.army[fila].move(self.changedX, self.changedY)
 
-        #self.x = self.x + self.changedX
-
 
 
 class Player(Unity):
@@ -117,7 +111,6 @@ firstEnemy  = Enemy(370, 480)
 filas = 2
 unidades = 11
 
-#enemigos = EnemyLine(unidades, 0)
 enemigos = Army(unidades, filas)
 
 print(enemigos)
